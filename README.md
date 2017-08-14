@@ -2,7 +2,7 @@
 IP代理池
 =======
 
-> 基于aiohttp的代理池 
+> 基于aiohttp的代理池
 
 ### 1、安装
 
@@ -16,11 +16,14 @@ git clone git@github.com:s723138643/proxy_pool.git
 ### 2、运行:
 
 ```
-到克隆的目录下默认为proxy_pool:
+切换到克隆的目录，默认为proxy_pool
+安装依赖：
+>>>pip install -r requirements.txt
+运行程序：
 >>>python main.py
 ```
 
-　　任务启动后，自动载入proxy_getter目录中的插件，并通过插件实例的get_proxy方法获取代理, 此后默认每20分钟会重复执行一次。
+任务启动后，自动载入proxy_getter目录中的插件，并通过插件实例的get_proxy方法获取代理, 此后默认每20分钟会重复执行一次。
 
 ### 3、使用
 
@@ -28,6 +31,7 @@ git clone git@github.com:s723138643/proxy_pool.git
     >> curl http://127.0.0.1:5000/get
 
 爬虫中使用，如果要在爬虫代码中使用的话， 可以将此api封装成函数直接使用，例如:
+
 ```
 import requests
 

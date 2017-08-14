@@ -1,3 +1,4 @@
+import sys
 import logging
 import asyncio
 import aiohttp
@@ -16,7 +17,25 @@ config = {
 }
 logging.basicConfig(**config)
 
+
+def check_version():
+    applied = True
+    version = sys.version_info()
+    if version.major < 3:
+        applied = False
+    elif version.major == 3 and version.minor < 6:
+        applied = False
+    else:
+        applied = True
+
+    if not applied:
+        logging.warn('Python 3.6+ required')
+        sys.exit(-1)
+
+
 def main():
+    check_version()
+
     usable_queue = HQueue()
     verify_queue = MQueue()
     loop = asyncio.get_event_loop()
@@ -42,6 +61,7 @@ def main():
             verify.cancel()
         if not (fetcher.done() or fetcher.cancelled()):
             fetcher.cancel()
+
 
 if __name__ == '__main__':
     main()
