@@ -93,7 +93,7 @@ class SessionPool:
     def _wakeup_next(self, waiters):
         while waiters:
             fut = waiters.popleft()
-            if fut.done() or fut.cancelled():
+            if fut.done():
                 continue
             fut.set_result(None)
             return
