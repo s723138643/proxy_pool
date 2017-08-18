@@ -100,7 +100,7 @@ class HQueue(MQueue):
         assert isinstance(item, tuple), ValueError('Excepted a tuple object')
         self._queue.add(item[1])
         heapq.heappush(self._deadline, item)
-    
+
     def get_dead(self, count=0):
         timeouts = []
         while self._deadline:

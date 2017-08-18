@@ -87,7 +87,7 @@ class Proxy:
             except asyncio.TimeoutError:
                 '''it seem that we spent REFRESH_INTERVAL seconds'''
                 pass
-            
+
             for proxy in self._usable.get_dead():
                 await self._verify.put(proxy)
 
